@@ -1,33 +1,33 @@
-# Node modules
+# Dependencies
 node_modules/
 
-# Playwright test results
+# Test Results
 test-results/
 playwright-report/
 playwright/.cache/
 
-# OS files
-.DS_Store
-Thumbs.db
+# Test Data (generated)
+test-data/userData.json
 
-# IDE files
+# Environment Variables
+.env
+.env.local
+
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# Environment variables
-.env
-.env.local
+# OS Files
+.DS_Store
+Thumbs.db
 
 # Logs
+*.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Optional: Remove if you want to commit test results
-*.mp4
-*.webm
-trace.zip
-
+# Optional
+coverage/
+.nyc_output/

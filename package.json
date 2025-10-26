@@ -1,4 +1,29 @@
 {
+  "name": "demoblaze-automation",
+  "version": "1.0.0",
+  "description": "Demoblaze test automation framework with Playwright",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:register": "playwright test tests/register-test.js",
+    "test:login": "playwright test tests/login-test.js",
+    "test:logout": "playwright test tests/logout-test.js",
+    "test:order": "playwright test tests/order-test.js",
+    "test:all": "playwright test --workers=1",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen https://www.demoblaze.com"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "testing",
+    "e2e",
+    "demoblaze"
+  ],
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
     "@playwright/test": "^1.56.1"
   }
