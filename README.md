@@ -63,25 +63,24 @@ npx playwright install
 ```
 demoblaze/
 ├── fixtures/                  # Custom Playwright fixtures
-│   ├── base-test.js          # Custom test fixtures (auto-setup)
-│   └── BASE_TEST_GUIDE.md    # Detailed guide on using fixtures
+│   └── base-test.js           # Custom test fixtures (auto-setup)
 ├── pages/                     # Page Object Model classes
-│   ├── categoriesPage.js     # Category navigation
-│   ├── loginPage.js          # Login page interactions
-│   ├── logoutPage.js         # Logout page interactions
-│   ├── productPage.js        # Product and cart operations
-│   └── registerPage.js       # Registration page interactions
+│   ├── categoriesPage.js      # Category navigation
+│   ├── loginPage.js           # Login page interactions
+│   ├── logoutPage.js          # Logout page interactions
+│   ├── productPage.js         # Product and cart operations
+│   └── registerPage.js        # Registration page interactions
 ├── tests/                     # Test specifications
-│   ├── login-test.js         # Login functionality tests
-│   ├── logout-test.js        # Logout functionality tests
-│   ├── order-test.js         # Product ordering tests
-│   └── register-test.js      # User registration tests
+│   ├── login-test.js          # Login functionality tests
+│   ├── logout-test.js         # Logout functionality tests
+│   ├── order-test.js          # Product ordering tests
+│   └── register-test.js       # User registration tests
 ├── test-data/                 # Test data files
-│   └── userData.json         # User credentials (dynamically generated)
+│   └── userData.json          # User credentials (dynamically generated)
 ├── utils/                     # Helper utilities
-│   └── dataHelper.js         # Data generation and reading utilities
+│   └── dataHelper.js          # Data generation and reading utilities
 ├── playwright.config.js       # Playwright configuration
-├── package.json              # Project dependencies
+├── package.json               # Project dependencies
 └── README.md                  # Project documentation
 ```
 
