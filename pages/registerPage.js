@@ -9,7 +9,7 @@ export class RegisterPage {
   
     async openSignup() {
       await this.page.click(this.signupLink);
-      await this.page.waitForSelector(this.usernameInput);
+      await this.page.locator(this.usernameInput).waitFor({ state: 'visible' });
     }
   
     async register(username, password) {

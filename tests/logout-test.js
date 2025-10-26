@@ -5,7 +5,6 @@ test('User can log out successfully', async ({ authenticatedPage, logoutPage }) 
   
   await logoutPage.logout();
 
-  // Verify logout - login link should be visible again
   await expect(authenticatedPage.locator('#login2')).toBeVisible({ timeout: 5000 });
   
   console.log('✅ User logged out successfully');

@@ -8,10 +8,10 @@ test('User can successfully order an Apple monitor 24', async ({
   // User is already logged in via authenticatedPage fixture
   
   // Navigate to Monitors category
-  
   await categoriesPage.selectMonitors();
   
-  await authenticatedPage.waitForTimeout(1000); // Wait for products to load
+  // Wait for products to load
+  await authenticatedPage.locator('.card').first().waitFor({ state: 'visible', timeout: 5000 });
   
   // Add product to cart
   await productPage.addProductToCart('Apple monitor 24');

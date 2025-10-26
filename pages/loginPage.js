@@ -9,7 +9,7 @@ export class LoginPage {
   
     async openLogin() {
       await this.page.click(this.loginLink);
-      await this.page.waitForSelector(this.usernameInput);
+      await this.page.locator(this.usernameInput).waitFor({ state: 'visible' });
     }
   
     async login(username, password) {

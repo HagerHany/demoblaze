@@ -21,7 +21,8 @@ export class ProductPage {
         });
       await this.page.getByText(productName).click();
       await this.page.click(this.addToCartButton);
-      await this.page.waitForTimeout(2000); // wait for alert
+      // Wait for dialog to be handled
+      await this.page.waitForEvent('dialog', { timeout: 5000 });
     }
   
     async openCart() {

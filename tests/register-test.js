@@ -15,8 +15,8 @@ test('User can register with valid data', async ({ page, registerPage }) => {
   
   await registerPage.register(username, password);
 
-  // Wait for registration to complete
-  await page.waitForTimeout(2000);
+  // Wait for registration dialog to be handled
+  await page.waitForEvent('dialog', { timeout: 5000 });
   
   console.log(`✅ User registered: ${username}`);
 });

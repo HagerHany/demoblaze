@@ -83,7 +83,7 @@ export const test = base.extend({
   authenticatedPage: async ({ page, loginPage, userData }, use) => {
     await loginPage.openLogin();
     await loginPage.login(userData.username, userData.password);
-    
+    // Wait until the user greeting locator is visible instead of fixed timeout
     await expect(page.locator('#nameofuser')).toContainText(userData.username);
     
     await use(page);
