@@ -1,17 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/loginPage.js';
-import { readUserData } from '../utils/dataHelper.js';
+import { test, expect } from '../fixtures/base.js';
 
-test('User can log in with valid data', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const { username, password } = readUserData();
-
-  await page.goto('https://www.demoblaze.com/');
+test('User can log in with valid data', async ({ page, loginPage, userData }) => {
   await loginPage.openLogin();
-  await loginPage.login(username, password);
+  await loginPage.login(userData.username, userData.password);
 
-  await page.waitForTimeout(3000); // see login happen
-
-  // verify login
-  await expect(page.locator('#nameofuser')).toContainText(username);
+  // Wait for login to complete and verify
+  
+  await expect(page.locator('#nameofuser')).toContainText(userData.username);
+  
+  console.log(`✅ User logged in: ${userData.username}`);
 });

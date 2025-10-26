@@ -1,23 +1,27 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/loginPage.js';
-import { ProductPage } from '../pages/productPage.js';
-import { readUserData } from '../utils/dataHelper.js';
-import { CategoriesPage } from '../pages/categoriesPage.js';
+import { test, expect } from '../fixtures/base.js';
 
-test('User can successfully order an Apple monitor 24', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const productPage = new ProductPage(page);
-  const categoriesPage = new CategoriesPage(page);
-  const { username, password } = readUserData();
-
-  await page.goto('https://www.demoblaze.com/');
-  await loginPage.openLogin();
-  await loginPage.login(username, password);
+test('User can successfully order an Apple monitor 24', async ({ 
+  authenticatedPage, 
+  productPage, 
+  categoriesPage 
+}) => {
+  // User is already logged in via authenticatedPage fixture
+  
+  // Navigate to Monitors category
   
   await categoriesPage.selectMonitors();
-  await productPage.addProductToCart('Apple monitor 24'); 
+  
+  await authenticatedPage.waitForTimeout(1000); // Wait for products to load
+  
+  // Add product to cart
+  await productPage.addProductToCart('Apple monitor 24');
+  
+  // Complete checkout
   await productPage.openCart();
   await productPage.placeOrder();
 
-  await expect(page.locator('.sweet-alert')).toBeVisible();
+  // Verify order success
+  await expect(authenticatedPage.locator('.sweet-alert')).toBeVisible({ timeout: 5000 });
+  
+  console.log('✅ Order placed successfully for Apple monitor 24');
 });

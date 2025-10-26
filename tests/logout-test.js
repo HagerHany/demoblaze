@@ -1,19 +1,12 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/loginPage.js';
-import { LogoutPage } from '../pages/logoutPage.js';
-import { readUserData } from '../utils/dataHelper.js';
+import { test, expect } from '../fixtures/base.js';
 
-test('User can log out successfully', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const logoutPage = new LogoutPage(page);
-  const { username, password } = readUserData();
-
-  await page.goto('https://www.demoblaze.com/');
-  await loginPage.openLogin();
-  await loginPage.login(username, password);
-
-  await page.waitForSelector('#nameofuser');
+test('User can log out successfully', async ({ authenticatedPage, logoutPage }) => {
+  // User is already logged in via authenticatedPage fixture
+  
   await logoutPage.logout();
 
-  await expect(page.locator('#login2')).toBeVisible(); // login link returns
+  // Verify logout - login link should be visible again
+  await expect(authenticatedPage.locator('#login2')).toBeVisible({ timeout: 5000 });
+  
+  console.log('✅ User logged out successfully');
 });

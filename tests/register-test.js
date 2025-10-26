@@ -1,17 +1,22 @@
-import { test, expect } from '@playwright/test';
-import { RegisterPage } from '../pages/registerPage.js';
+import { test, expect } from '../fixtures/base.js';
 import { generateUserData } from '../utils/dataHelper.js';
 
-test('User can register with valid data', async ({ page }) => {
-  const registerPage = new RegisterPage(page);
+test('User can register with valid data', async ({ page, registerPage }) => {
   const { username, password } = generateUserData();
 
-  await page.goto('https://www.demoblaze.com/');
   await registerPage.openSignup();
+
+  // Listen for success dialog
+  page.once('dialog', async dialog => {
+    console.log(`Alert message: ${dialog.message()}`);
+    expect(dialog.message()).toContain('Sign up successful');
+    await dialog.accept();
+  });
+  
   await registerPage.register(username, password);
 
-  // optional wait to see what happens
-  await page.waitForTimeout(3000);
-
-  // normally we would assert popup message here
+  // Wait for registration to complete
+  await page.waitForTimeout(2000);
+  
+  console.log(`✅ User registered: ${username}`);
 });
