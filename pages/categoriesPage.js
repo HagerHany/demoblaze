@@ -2,7 +2,7 @@
 export class CategoriesPage {
     constructor(page) {
       this.page = page;
-      this.categoryItems = '.list-group';
+      this.categoryItems = '.list-group a.list-group-item';
     }
   
     async selectCategoryByName(name) {
@@ -10,9 +10,8 @@ export class CategoriesPage {
     }
   
     async selectCategoryByIndex(index) {
-      await this.categoryItems.nth(index).click();
+        await this.page.locator(this.categoryItems).nth(index).click();
     }
-  
     async selectMonitors() {
       await this.selectCategoryByName('Monitors');
     }
