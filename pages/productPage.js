@@ -14,10 +14,14 @@ export class ProductPage {
     }
   
     async addProductToCart(productName) {
+         // Set up dialog handler BEFORE clicking
+    this.page.once('dialog', async dialog => {
+            console.log(`Alert message: ${dialog.message()}`);
+            await dialog.accept();
+        });
       await this.page.getByText(productName).click();
       await this.page.click(this.addToCartButton);
       await this.page.waitForTimeout(2000); // wait for alert
-      await this.page.on('dialog', (dialog) => dialog.accept());
     }
   
     async openCart() {
