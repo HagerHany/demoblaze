@@ -668,21 +668,6 @@ npx playwright show-trace trace.zip
 - Test files must end with **`-test.js`** to be picked up by Playwright
 - Generated usernames follow the pattern **`user_xxxxxx`** (6 random chars)
 
-## 🎯 Future Enhancements
-
-Potential improvements for the framework:
-
-- [ ] Add tests for multiple browsers (Firefox, Safari, Mobile)
-- [ ] Implement negative test scenarios (invalid login, empty cart checkout)
-- [ ] Add tests for different product categories
-- [ ] Implement data-driven testing with multiple test data sets
-- [ ] Add API tests for backend validation
-- [ ] Integrate with CI/CD pipeline (GitHub Actions, Jenkins)
-- [ ] Add visual regression testing
-- [ ] Implement parallel test execution across multiple workers
-- [ ] Add performance testing metrics
-- [ ] Create custom Playwright fixtures
-
 ## 📞 Support
 
 For issues or questions:
